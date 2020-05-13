@@ -24,7 +24,9 @@ Co se stane když host A z VLAN10 se pokusí poslat data do VLAN20?
 Dále se pozmění trochu ip adresa
 ![zmena_ip](zmena_ip.gif)
 Dále se na switchi nastaví porty pro vlany aby se komunikovalo jen v ty daný skupině(vlaně)...
+VLAN se vytváří na switchi pomocí přiřazení portů na switchi ke konkrétní síti VLAN.
 ![porty_switche](porty_switche.png)
+![porty](porty.png)
 # Výhody VLAN
 • Oddělení speciálního provozu.
 
@@ -35,6 +37,8 @@ Dále se na switchi nastaví porty pro vlany aby se komunikovalo jen v ty daný 
 ![sjednoceni](sjednoceni.gif)
 
 • snížení broadcastů – hlavní výhodou VLAN je vytvoření více, ale menších, broadcastových domén => zlepšení výkonu sítě snížením provozu (traffic)
+
+![mensi_provoz](mensi_provoz.gif)
 
 • zvýšení zabezpečení – oddělení komunikace do speciální VLANy, kam není jiný přístup 
 (Dáme portu určitý číslo a žádný jiný port přes něj neprojde)
