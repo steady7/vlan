@@ -113,7 +113,7 @@ OK, teď když se vložila nová část to Ethernetovýho rámce, tak už to nen
 Nyní se pošle přes trunk, jupí!! Jak to ale vypadá uvnitř trunku?
 
 Můžeme si představit trunk jako silnici, každý pruh silnice patří jiný VLAN komunikaci.
-![silnice](silnice.gif)
+![silnice](silnice.png)
 Teď dorazil tagovanej rámec do switche 2 !!
 
 Switch 2 ví z toho tagu, že ho má poslat po VLAN10 počítači C.
