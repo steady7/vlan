@@ -24,13 +24,14 @@ Co se stane když host A z VLAN10 se pokusí poslat data do VLAN20?
 Dále se pozmění trochu ip adresa
 ![zmena_ip](zmena_ip.gif)
 Dále se na switchi nastaví porty pro vlany aby se komunikovalo jen v ty daný skupině(vlaně)...
-![porty_switche](porty_switche.gif)
+![porty_switche](porty_switche.png)
 # Výhody VLAN
 Oddělení speciálního provozu.
-[vlastnost1](vlastnost1.png)
+
 zvýšení zabezpečení – oddělení komunikace do speciální VLANy, kam není jiný přístup 
 (Dáme portu určitý číslo a žádný jiný port přes něj neprojde)
-[priklad1](priklad1.png)
+
+![priklad1](priklad1.png)
 
  
 
