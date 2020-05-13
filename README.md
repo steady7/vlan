@@ -10,6 +10,11 @@
 - [IEEE802.1Q tagování](#ieee8021q-tagov%c3%a1n%c3%ad)
   - [když se rámec dostane do switche, proběhne tkzv. taggovaní](#kdy%c5%be-se-r%c3%a1mec-dostane-do-switche-prob%c4%9bhne-tkzv-taggovan%c3%ad)
 - [VLAN Trunking Protocol (VTP)](#vlan-trunking-protocol-vtp)
+  - [VTP doména](#vtp-dom%c3%a9na)
+  - [VTP režimy](#vtp-re%c5%beimy)
+- [Agregace linek](#agregace-linek)
+- [Link Aggregation Control Protocol](#link-aggregation-control-protocol)
+- [Native VLAN](#native-vlan)
 
 # vlan
 # Co to je VLAN?
@@ -154,10 +159,90 @@ To znamená že switch 2 zahotí ten VLAN tag a pošle originální Ethernetový
 
 KONEC TAGOVÁNÍ !! :)
 # VLAN Trunking Protocol (VTP) 
+> síťový protokol společnosti Cisco, který zajišťuje přenášení čísel a názvů virtuálních LAN (VLAN) mezi přepínači zařazených do jedné domény  
 
+> spravuje přidávání, mazání a přejmenování VLAN uvnitř VTP domény  
 
+> VTP doména je tvořena jedním nebo více síťovými zařízeními, která mají nastaveno stejné jméno domény (volitelně i heslo) a jsou propojeny pomocí trunku 
 
+![bez vtp](bez_vtp.png)
 
+Takto by vypadal sít bez VTP, museli bychom spravovat a konfigurovat všechny switche najednou a to by byla nejen časově náročné, ale hodněkrát i lehké na chybování.
 
- 
+![s vtp](s_vtp.png)
+
+Díky tomuto protokolu můžeme vytvářet VLANy na jednom SERVER switchi a všechny ostatní CLIENT switche se musí centralizovat sami.
+
+Na VTP Serveru můžeme tedy přidat, upravit nebo odstranit VLAN.
+
+Poté co jsme hotovi s úpravami, server pošle všechny tyto konfigurace do ostatních VTP klientů (v jedné stejné VTP doméně samozřejmě)
+
+![distribuce](distribuce.gif)
+
+## VTP doména
+
+![vtp domena](vtp_domena.png)
+
+Všechny switche v jedné doméně sdílí stejná VLAN nastavení!!
+
+VTP doména nemůže fungovat bez pojmenování! Proto se nastavuje jméno domény při první konfiguraci.
+
+Všechny switche v doméně můsíme nastavit na stejné jméno jako název domény.
+
+## VTP režimy
+
+Jsou tedy 3 režimy: VTP server, klient a transparent
+
+![3_rezimy_vtp](3_rezimy_vtp.png)
+
+# Agregace linek
+> metody kombinování (agregace) více síťových připojení => zvýšení propustnosti a záruka funkčnosti, jestli jedna linka selže
+
+> aplikována na 3 nejnižších vrstvách ISO/OSI
+
+> zatížení rovnoměrně rozložené na všechny linky
+
+> rozhraní sdílí jednu logickou adresu (IP), nebo jednu fyzickou adresu (MAC) nebo má každé rozhraní svoji vlastní adresu 
+
+# Link Aggregation Control Protocol 
+
+> LACP nabízí metodu kontroly svazku několika fyzických portů, které dohromady vytváří jediný logický kanál
+
+> umožňuje síťovému zařízení sjednat automatické svázání linek, pomocí odeslání paketů peeru
+
+# Native VLAN 
+
+> nastavuje se na trunk portu (port, který je zařazen do více VLAN)
+
+> u Cisco prvků musíme nativní VLANu vždy nastavit, a to shodně na obou stranách trunku
+
+> provoz, který je zařazen do native VLAN se při přenosu netaguje (zůstává nezměněn) a příchozí provoz, který není tagovaný se zařazuje do native VLAN
+
+> často se jako native VLAN nastavuje management VLAN 
+
+Prostě je to speciální VLAN, u který komunikace přes trunk není tagovaná 
+
+Defaultní VLAN normálně je VLAN1
+
+![native](native.png)
+
+Na obrázku pc E a F nejsou přiřazeny k žádnýmu VLANU a proto jsou defaultně patří do VLAN1
+
+A když pc E pošle rámec počítači F, tak může cestovat přes trunk beztoho aniž by měl VLAN tag.
+
+Proto bychom ho měli změnit na něco jinýho než 1, jinak riskujem že nás hacknou ... :/
+
+Native VLAN (defaultní) by měl být stejný na obou koncí trunku!!! jinak se ti to celý pojebe
+
+![native_ex](native_ex.png)
+
+Na obrázku je takovej příklad kde je native VLAN užitečný
+
+Funguje to tak že PC je připojený k IP telefonu a ten k switchi...
+
+No a když to chceme takhle tak můžeme nastavit Native VLAN na VLAN 10 a tím pádem bude rámec z PC1 cestovat až do PC2 bez tagování(všichni ho pustí, i telefon protože ten má zas nějakej pofiderní switch v sobě a očekává jen tagovanej rámec, takže ten netagovanej ho nezajímá). 
+
+A když ip telefon pošle, tak bude tagovanej a switch ho pošle kam patří.
+
+Takže se Native VLAN hodí pro to když datovej VLAN a hlasovej VLAN sdílí stejnou linku 
 
