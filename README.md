@@ -1,9 +1,13 @@
 # vlan
 # Co to je VLAN?
 • Virtuální LAN slouží k logickému rozdělení sítě nezávisle na fyzickém uspořádání
+
 • pomocí VLAN můžeme síť segmentovat na menší sítě uvnitř fyzické struktury původní sítě
+
 • obvykle bývá realizována na zařízení switch (přepínač)
+
 • důležitou součástí je trunk – port, který je zařazen do více VLAN
+
 • pomocí VLAN můžeme dosáhnout stejného efektu, jako když máme skupinu zařízení připojených do switche a druhou skupinu do jiného switche 
 # Na co VLANy?
 ### lan vs vlan rozdíl v gifu
