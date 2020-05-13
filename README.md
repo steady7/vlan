@@ -135,7 +135,7 @@ U shrnutí trunku jsem řekl že: "Access port pošle (nebo očekává že dosta
 To znamená že switch 2 zahotí ten VLAN tag a pošle originální Ethernetový rámec počítači C.....
 
 KONEC TAGOVÁNÍ !! :)
-
+# VLAN Trunking Protocol (VTP) 
 
 
 
