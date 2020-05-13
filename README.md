@@ -26,9 +26,17 @@ Dále se pozmění trochu ip adresa
 Dále se na switchi nastaví porty pro vlany aby se komunikovalo jen v ty daný skupině(vlaně)...
 ![porty_switche](porty_switche.png)
 # Výhody VLAN
-Oddělení speciálního provozu.
+• Oddělení speciálního provozu.
 
-zvýšení zabezpečení – oddělení komunikace do speciální VLANy, kam není jiný přístup 
+• zjednodušená správa – k přesunu zařízení do jiné sítě stačí překonfigurovat zařazení do VLANy => správce konfiguruje SW a ne HW (fyzické přepojení)
+
+• snížení HW – různé podsítě mohou být na stejném switchi 
+
+![sjednoceni](sjednoceni.gif)
+
+• snížení broadcastů – hlavní výhodou VLAN je vytvoření více, ale menších, broadcastových domén => zlepšení výkonu sítě snížením provozu (traffic)
+
+• zvýšení zabezpečení – oddělení komunikace do speciální VLANy, kam není jiný přístup 
 (Dáme portu určitý číslo a žádný jiný port přes něj neprojde)
 
 ![priklad1](priklad1.png)
