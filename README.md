@@ -44,6 +44,91 @@ VLAN se vytváří na switchi pomocí přiřazení portů na switchi ke konkrét
 (Dáme portu určitý číslo a žádný jiný port přes něj neprojde)
 
 ![priklad1](priklad1.png)
+# Co je to trunk(IEEE 802.1q tagging)
+• označován také jako trunking protocol nebo dot1q tagging
+
+• standardizovaná metoda, kterou podporují všechny moderní switche s podporou VLAN
+
+Jak uděláme, aby B na switchi 1 komunikoval s D na switchi 2? (viz. obrazek)
+![trunk1](trunk1.png)
+Toto se vyřeší pomocí tzv. trunku
+
+Tento proces spojování ruzných komunikací VLAN pomoci trunků se nazývá trunkování.
+
+Trunkování funguje díky Trunk portu 
+
+![trunkport](trunkport.png)
+
+Trunk port přidá VLAN tag do ethernetovýho rámce aby identifikoval do jaké VLAN síťe ten rámec patří...
+
+Access port(přistupový port) = přenáší provoz pouze pro jednu VLAN 
+![accesport](accesport.png)
+
+# Shrnutí trunku
+Jestliže chceme, aby různé VLANové komunikace cestovali skrz 2 switche, potřebujeme trunk.
+
+Trunk je vytvořen konfigurací trunk portů.
+
+Trunk port vyšle (nebo očekává že dostane) tagovanou komunikaci.
+
+Access port pošle (nebo očekává že dostane) netagovanou komunikaci.
+
+![full](full.png)
+### když se rámec dostane do switche, proběhne tkzv. taggovaní (IEEE802.1Q tagování)
+
+Princip taggovaní:
+o hlavička originálního rámce je rozšířena o 4B informaci, první značka je protokol 802.1q, dále následuje priorita dle protokolu, příznak a poslední je číslo VLAN
+
+o protože se změní data, je třeba přepočítat kontrolní součet na konci rámce 
+
+Teď mými slovy:
+
+Když pc A pošle do switche ethernetový rámec, rámec má zdrojovou a cílovou adresu atd., ale neobsahuje žádné informace o VLANě.
+
+Důvodem je to, že počítač nemá tušení že nějaká VLANa existuje a ani nemusí.
+
+Tvorba a řízení VLANy je všechno úkol switche.
+
+Když switch 1 dostane ethernetový rámec od pc A, ví že přišel od pc A, který patří do VLAN 10.
+![vlanEX1](vlanEx1.png)
+Proto musí poslat tento rámec dalšímu členovy skupiny VLAN 10, který se nachází na switchi 2... takže musí poslat přes trunk xD
+![vlanEX2](vlanEx2.png)
+Před tím než pošle přes ten trunk, musí udělat jednu duležitou věc!!!!
+
+To jest vložení VLAN tagu do rámce.
+![vlozeni](vlozeni.gif)
+
+Tento záhadná tag se dělí na 4 části
+
+•první značka je protokol 802.1q
+
+•dále následuje priorita dle protokolu
+
+•příznak 
+
+•a poslední je číslo VLAN (identifikátor)
+![4casti](4casti.png)
+OK, teď když se vložila nová část to Ethernetovýho rámce, tak už to není Ethernetový, ale je to IEEE 802.1q rámec
+
+Nyní se pošle přes trunk, jupí!! Jak to ale vypadá uvnitř trunku?
+
+Můžeme si představit trunk jako silnici, každý pruh silnice patří jiný VLAN komunikaci.
+![silnice](silnice.gif)
+Teď dorazil tagovanej rámec do switche 2 !!
+
+Switch 2 ví z toho tagu, že ho má poslat po VLAN10 počítači C.
+
+ALE POZOR!!!!!
+
+U shrnutí trunku jsem řekl že: "Access port pošle (nebo očekává že dostane) netagovanou komunikaci."
+
+To znamená že switch 2 zahotí ten VLAN tag a pošle originální Ethernetový rámec počítači C.....
+
+KONEC TAGOVÁNÍ !! :)
+
+
+
+
 
  
 
