@@ -1,3 +1,16 @@
+- [vlan](#vlan)
+- [Co to je VLAN?](#co-to-je-vlan)
+- [Na co VLANy?](#na-co-vlany)
+    - [lan vs vlan rozdíl v gifu](#lan-vs-vlan-rozd%c3%adl-v-gifu)
+    - [Host A pošle data přes broadcast bez vlany](#host-a-po%c5%a1le-data-p%c5%99es-broadcast-bez-vlany)
+    - [Host A pošle data přes broadcast s VLANou](#host-a-po%c5%a1le-data-p%c5%99es-broadcast-s-vlanou)
+- [Výhody VLAN](#v%c3%bdhody-vlan)
+- [Co je to trunk(IEEE 802.1q tagging)](#co-je-to-trunkieee-8021q-tagging)
+- [Shrnutí trunku](#shrnut%c3%ad-trunku)
+- [IEEE802.1Q tagování](#ieee8021q-tagov%c3%a1n%c3%ad)
+  - [když se rámec dostane do switche, proběhne tkzv. taggovaní](#kdy%c5%be-se-r%c3%a1mec-dostane-do-switche-prob%c4%9bhne-tkzv-taggovan%c3%ad)
+- [VLAN Trunking Protocol (VTP)](#vlan-trunking-protocol-vtp)
+
 # vlan
 # Co to je VLAN?
 • Virtuální LAN slouží k logickému rozdělení sítě nezávisle na fyzickém uspořádání
@@ -29,18 +42,23 @@ VLAN se vytváří na switchi pomocí přiřazení portů na switchi ke konkrét
 ![porty](porty.png)
 # Výhody VLAN
 • Oddělení speciálního provozu.
+> ..
 
-• zjednodušená správa – k přesunu zařízení do jiné sítě stačí překonfigurovat zařazení do VLANy => správce konfiguruje SW a ne HW (fyzické přepojení)
+• zjednodušená správa 
+>k přesunu zařízení do jiné sítě stačí překonfigurovat zařazení do VLANy => správce konfiguruje SW a ne HW (fyzické přepojení)
 
-• snížení HW – různé podsítě mohou být na stejném switchi 
+• snížení HW 
+> různé podsítě mohou být na stejném switchi 
 
 ![sjednoceni](sjednoceni.gif)
 
-• snížení broadcastů – hlavní výhodou VLAN je vytvoření více, ale menších, broadcastových domén => zlepšení výkonu sítě snížením provozu (traffic)
+• snížení broadcastů 
+>hlavní výhodou VLAN je vytvoření více, ale menších, broadcastových domén => zlepšení výkonu sítě snížením provozu (traffic)
 
 ![mensi_provoz](mensi_provoz.gif)
 
-• zvýšení zabezpečení – oddělení komunikace do speciální VLANy, kam není jiný přístup 
+• zvýšení zabezpečení 
+> oddělení komunikace do speciální VLANy, kam není jiný přístup 
 (Dáme portu určitý číslo a žádný jiný port přes něj neprojde)
 
 ![priklad1](priklad1.png)
@@ -78,9 +96,9 @@ Access port pošle (nebo očekává že dostane) netagovanou komunikaci.
 ## když se rámec dostane do switche, proběhne tkzv. taggovaní 
 
 Princip taggovaní:
-o hlavička originálního rámce je rozšířena o 4B informaci, první značka je protokol 802.1q, dále následuje priorita dle protokolu, příznak a poslední je číslo VLAN
+>Hlavička originálního rámce je rozšířena o 4B informaci, první značka je protokol 802.1q, dále následuje priorita dle protokolu, příznak a poslední je číslo VLAN
 
-o protože se změní data, je třeba přepočítat kontrolní součet na konci rámce 
+> protože se změní data, je třeba přepočítat kontrolní součet na konci rámce 
 
 Teď mými slovy:
 
@@ -136,6 +154,7 @@ To znamená že switch 2 zahotí ten VLAN tag a pošle originální Ethernetový
 
 KONEC TAGOVÁNÍ !! :)
 # VLAN Trunking Protocol (VTP) 
+
 
 
 
