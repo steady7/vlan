@@ -90,12 +90,17 @@ Důvodem je to, že počítač nemá tušení že nějaká VLANa existuje a ani 
 Tvorba a řízení VLANy je všechno úkol switche.
 
 Když switch 1 dostane ethernetový rámec od pc A, ví že přišel od pc A, který patří do VLAN 10.
+
 ![vlanEX1](vlanEx1.png)
+
 Proto musí poslat tento rámec dalšímu členovy skupiny VLAN 10, který se nachází na switchi 2... takže musí poslat přes trunk xD
+
 ![vlanEX2](vlanEx2.png)
+
 Před tím než pošle přes ten trunk, musí udělat jednu duležitou věc!!!!
 
 To jest vložení VLAN tagu do rámce.
+
 ![vlozeni](vlozeni.gif)
 
 Tento záhadná tag se dělí na 4 části
@@ -107,13 +112,17 @@ Tento záhadná tag se dělí na 4 části
 •příznak 
 
 •a poslední je číslo VLAN (identifikátor)
+
 ![4casti](4casti.png)
+
 OK, teď když se vložila nová část to Ethernetovýho rámce, tak už to není Ethernetový, ale je to IEEE 802.1q rámec
 
 Nyní se pošle přes trunk, jupí!! Jak to ale vypadá uvnitř trunku?
 
 Můžeme si představit trunk jako silnici, každý pruh silnice patří jiný VLAN komunikaci.
+
 ![silnice](silnice.png)
+
 Teď dorazil tagovanej rámec do switche 2 !!
 
 Switch 2 ví z toho tagu, že ho má poslat po VLAN10 počítači C.
