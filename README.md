@@ -74,7 +74,8 @@ Trunk port vyšle (nebo očekává že dostane) tagovanou komunikaci.
 Access port pošle (nebo očekává že dostane) netagovanou komunikaci.
 
 ![full](full.png)
-### když se rámec dostane do switche, proběhne tkzv. taggovaní (IEEE802.1Q tagování)
+# IEEE802.1Q tagování
+### když se rámec dostane do switche, proběhne tkzv. taggovaní 
 
 Princip taggovaní:
 o hlavička originálního rámce je rozšířena o 4B informaci, první značka je protokol 802.1q, dále následuje priorita dle protokolu, příznak a poslední je číslo VLAN
